@@ -1,31 +1,41 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>A leaflet map</title>
-<meta charset= 'utf-8' />
+  <head>
+    <meta charset="utf-8">
+    <title>mapsnigeriainitiative</title>
+<meta name="description" content="Promoting quality GIS education and Training in Africa.">
+	<meta name="keywords" content="mapsnigeriainitiative, Geographic Information Systems, Nigeria, Initiative">
+    
+     <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzGrYijLQviiwIjrwSDv9mQcXXmTdcpMA&callback=initMap">
+    </script>
+  </head>
 
-<link rel="stylesheet" href="leaflet.css"/>
 
-</head>
+ 
+  <body>
+    
+             
+    <div id="map" style="width:700px;height:500px"></div>
+    <script>
 
-<body>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          center: {lat: 9.00, lng: 8.00},
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
 
-<div id='map' style='width:600px;height:400px;border:1px solid black'></div>
+        var boundaries = new google.maps.KmlLayer({
+          url: 'https://rawgit.com/mayotunde/geojson/master/lgaintairports.kml',
+          map: map
+        });
 
-<script src="leaflet.js"></script>
+	}
 
-<script>
+    </script>
 
-var map = L.map('map').setView([9.00,7.30], 6);
-
-L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
-  
-var marker = L.circleMarker([9.00, 7.30]).addTo(map);
-  
-
-</script>
-
-</body>
-
+ 
+  </body>
 </html>
-
 
